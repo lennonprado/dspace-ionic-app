@@ -7,11 +7,14 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="contenido-home">
+
+
+
+    <ion-img src="/assets/imgs/background.jpg" style="height: 200px; width: 100%;"></ion-img>
+
     <ion-card>
-        <ion-img src="/assets/imgs/background.jpg" style="height: 200px; width: 100%;"></ion-img>
-      
-        <ion-card-content style="background: transparent">
+      <ion-card-content>
           <ion-card-title>Bienvenido</ion-card-title>
           <p>Biblioteca Digital de Extensión Universitaria</p>
         </ion-card-content>
@@ -19,14 +22,16 @@
 
 
 
-  <div class="scroll-block" id="collections">      
-      <ion-scroll scrollX style="height:40px; overflow-x: scroll;">
-          <ion-badge color="primary" *ngFor="let comunidad of comunidades" 
-            class="item-icon-left item-icon-right" (click)="goToPage(comunidad)" >      
-               {{ comunidad.name | uppercase }}
-          </ion-badge>
-      </ion-scroll>
-  </div>    
+  
+      <ion-scroll scrollX>
+             
+            <ion-badge  *ngFor="let comunidad of comunidades" 
+              class="item-icon-left item-icon-right" (click)="goToPage(comunidad)" >      
+                {{ comunidad.name | uppercase }}
+            </ion-badge>
+          
+        </ion-scroll>
+  
 </ion-content>
 
 

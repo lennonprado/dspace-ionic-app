@@ -1,3 +1,18 @@
-page-home {
+.contenido-home{
+background-color: #FFFFFF;
+margin: 0px;
+padding: 0px;
+}
 
+ion-scroll{
+margin: 10px;
+height: 40px;;
+
+}
+ion-badge{
+    margin-right: 10px;
+    padding: 10px; 
+    border-radius: 15px !important;
+    font-weight: normal;
+    font-size: 75%;
 }

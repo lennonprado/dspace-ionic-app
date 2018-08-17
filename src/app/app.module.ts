@@ -11,6 +11,7 @@ import { CommunitiesPage } from '../pages/communities/communities'
 import { CollectionsPage } from '../pages/collections/collections'
 import { ItemsPage } from '../pages/items/items';
 import { ItemPage } from '../pages/item/item';
+import { Splash } from '../pages/splash/splash';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,7 +28,8 @@ import { BeuService } from '../providers/beu-service/beu-service'
     CommunitiesPage,
     CollectionsPage,
     ItemsPage,
-    ItemPage
+    ItemPage,
+    Splash
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { BeuService } from '../providers/beu-service/beu-service'
     CommunitiesPage,
     CollectionsPage,
     ItemsPage,
-    ItemPage
+    ItemPage,
+    Splash
   ],
   providers: [
     BeuService,

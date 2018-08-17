@@ -8,7 +8,6 @@ import { AboutPage } from '../pages/about/about';
 import { CommunitiesPage } from '../pages/communities/communities'
 
 
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -19,8 +18,17 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-    this.initializeApp();
+  constructor(
+    public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen
+  ){
+
+    platform.ready().then(() => {
+      statusBar.styleDefault();
+      // splashScreen.hide(); // REMOVE THIS!
+    });
+  //  this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
