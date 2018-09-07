@@ -18,7 +18,7 @@ export class HomePage {
 
   goToPage(item){
     
-    this.navCtrl.setRoot(CollectionsPage,item);
+    this.navCtrl.push(CollectionsPage,item);
 
   }
 

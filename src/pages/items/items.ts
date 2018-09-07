@@ -34,7 +34,7 @@ export class ItemsPage {
  
   goToPage(item){
     
-    this.navCtrl.setRoot(ItemPage,item);
+    this.navCtrl.push(ItemPage,item);
     
   }
 
@@ -49,5 +49,11 @@ export class ItemsPage {
       }
     )
   }
+
+  goBack() {
+    this.navCtrl.pop();
+    console.log('Click on button Test Console Log');
+ }
+
 
 }

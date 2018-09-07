@@ -20,17 +20,15 @@
         </ion-card-content>
     </ion-card>
 
+ 
+           
+    
+    <ion-card  *ngFor="let comunidad of comunidades" (click)="goToPage(comunidad)" >   
+        <ion-card-content>
+          <ion-card-title>{{ comunidad.name | uppercase }}</ion-card-title>
+        </ion-card-content>
+    </ion-card> 
 
-
-  
-      <ion-scroll scrollX>
-             
-            <ion-badge  *ngFor="let comunidad of comunidades" 
-              class="item-icon-left item-icon-right" (click)="goToPage(comunidad)" >      
-                {{ comunidad.name | uppercase }}
-            </ion-badge>
-          
-        </ion-scroll>
   
 </ion-content>
 

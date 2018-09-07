@@ -43,5 +43,9 @@ export class ItemPage {
       }
     )
   }
+  goBack() {
+    this.navCtrl.pop();
+    console.log('Click on button Test Console Log');
+ }
 
 }

@@ -24,11 +24,8 @@ export class CommunitiesPage {
 
   comunidades = [];
 
-  goToPage(item){
-
-    console.log(item);
-    
-    this.navCtrl.setRoot(CollectionsPage,item);
+  goToPage(item){    
+    this.navCtrl.push(CollectionsPage,item);
   }
 
   ionViewDidLoad(){
@@ -42,6 +39,10 @@ export class CommunitiesPage {
       }
     )
   }
+  goBack() {
+    this.navCtrl.pop();
+    console.log('Click on button Test Console Log');
+ }
 
 
 }

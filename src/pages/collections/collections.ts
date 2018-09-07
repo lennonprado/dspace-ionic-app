@@ -31,7 +31,7 @@ export class CollectionsPage {
 
   goToPage(coleccion){
     
-    this.navCtrl.setRoot(ItemsPage,coleccion);
+    this.navCtrl.push(ItemsPage,coleccion);
   }
 
   ionViewDidLoad(){
@@ -45,6 +45,9 @@ export class CollectionsPage {
       }
     )
   }
-
+  goBack() {
+    this.navCtrl.pop();
+    console.log('Click on button Test Console Log');
+ }
 
 }

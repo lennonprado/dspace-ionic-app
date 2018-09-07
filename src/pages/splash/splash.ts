@@ -17,17 +17,19 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export class Splash {
  
   constructor(public viewCtrl: ViewController, public splashScreen: SplashScreen) {
- 
+    
   }
  
 
   ionViewDidEnter() {
  
-    this.splashScreen.hide();
- 
+    this.splashScreen.show();
+    console.log('entro');
+    
     setTimeout(() => {
       this.viewCtrl.dismiss();
-    }, 4000);
+      console.log('salio');
+    }, 8000);
  
   }
  
