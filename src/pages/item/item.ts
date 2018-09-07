@@ -31,21 +31,38 @@ export class ItemPage {
   }
 
   ionViewDidLoad(){
-    this.beuService.getItem(this.item.uuid)
-    .subscribe(
-      (data: any[]) => { // Success
-        this.bitstreams = data;
-        console.log(this.item);
-        
-      },
-      (error) =>{
-        console.error(error);
-      }
-    )
+    this.getItems(this.item.uuid);
+    this.getBitstreams(this.item.uuid);
   }
+
   goBack() {
     this.navCtrl.pop();
     console.log('Click on button Test Console Log');
  }
+
+  getItems(id){
+    this.beuService.getItem(id).subscribe(
+      ( data : any )  => { this.item = data; console.log(data) },
+      ( error ) => { console.error(error); } 
+    ); 
+  }
+
+  getBitstreams(id){
+    this.beuService.getBitstreams(id).subscribe(
+      ( data : any[] )  =>  { this.bitstreams = data; console.log(data); },
+      ( error ) =>  { console.error(error); }
+    );
+  }
+
+  /** Variables para template */
+
+  getItemMetadataEntry(key) : string{
+    let link = this.bitstreams.find(function(element){
+        return element.key === key;
+    },key);
+    return link.value;
+  }
+  
+
 
 }

@@ -27,9 +27,13 @@ export class BeuService {
   }
 
   getItem(id) {
-    return this.http.get( this.apiUrl + 'items/' + id + '/bitstreams');
+    return this.http.get( this.apiUrl + 'items/' + id + '/metadata');
   }
   
+  getBitstreams(id) {
+    return this.http.get( this.apiUrl + 'items/' + id + '/bitstreams');
+  }
+
 
 
 }
