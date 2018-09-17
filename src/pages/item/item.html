@@ -14,6 +14,25 @@
 
 
 <ion-content padding>
-  <h1>{{item.name}}</h1>
-  <button>Descargar</button>
+  <h1>{{title}}</h1>
+
+     
+      <b>Autor/es</b>
+    <p><span *ngFor="let autor of autores">
+      {{ autor.value}}.
+    </span></p>
+      
+    <p>
+        <ion-badge item-end  *ngFor="let tag of tags">
+          {{tag.value}}
+        </ion-badge>
+    </p>
+
+      <b>Reseña</b>
+    <p class="resena" *ngFor="let descr of description">
+      {{ descr.value}}
+    </p>
+
+
+ <button ion-button block>Descargar</button>
 </ion-content>

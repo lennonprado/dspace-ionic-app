@@ -16,7 +16,17 @@ import { BeuService } from '../../providers/beu-service/beu-service';
 })
 export class ItemPage {
 
-  item;
+  item = [];
+
+  title               = '';
+  autores     : any[] = [];
+  date                = '';
+  description : any[] = [];
+  format              = '';
+  language            = '';
+  publisher   : any[] = [];
+  rights              = '';
+  tags        : any[] = [];
 
   bitstreams = [];
 
@@ -26,13 +36,13 @@ export class ItemPage {
     public beuService: BeuService 
   ) {
 
-    this.item = navParams.data;
+    //this.item = navParams.data;
 
   }
 
   ionViewDidLoad(){
-    this.getItems(this.item.uuid);
-    this.getBitstreams(this.item.uuid);
+    this.getItems(this.navParams.data.uuid);
+    this.getBitstreams(this.navParams.data.uuid);
   }
 
   goBack() {
@@ -42,7 +52,14 @@ export class ItemPage {
 
   getItems(id){
     this.beuService.getItem(id).subscribe(
-      ( data : any )  => { this.item = data; console.log(data) },
+      ( data : any )  => { 
+          this.item = data;
+          console.log(data);            
+          this.autores = this.getAutores(data);
+          this.title = this.getTitle(data);
+          this.description = this.getDescription(data);
+          this.tags = this.getTags(data);
+        },
       ( error ) => { console.error(error); } 
     ); 
   }
@@ -56,13 +73,40 @@ export class ItemPage {
 
   /** Variables para template */
 
-  getItemMetadataEntry(key) : string{
-    let link = this.bitstreams.find(function(element){
+  getItemMetadataEntry(key) : any[] {
+    const result = this.item.filter(function(element){
         return element.key === key;
     },key);
-    return link.value;
+    
+    return result;
   }
   
+  getAutores(data : any[]) : any[]{
+    const result = this.item.filter(function(element){
+      return element.key === 'dc.creator';
+    });
+    return result;
+  }
 
+  getDescription(data : any[]) : any[]{
+    const result = this.item.filter(function(element){
+      return element.key === 'dc.description';
+    });
+    return result;
+  }
+
+  getTags(data : any[]) : any[]{
+    const result = this.item.filter(function(element){
+      return element.key === 'dc.subject';
+    });
+    return result;
+  }
+
+  getTitle(data : any[]) : string{
+    const result = this.item.find(function(element){
+      return element.key === 'dc.title';
+    });
+    return result.value;
+  }
 
 }

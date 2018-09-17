@@ -34,6 +34,17 @@ export class BeuService {
     return this.http.get( this.apiUrl + 'items/' + id + '/bitstreams');
   }
 
+  search(query) {
+    const myparam =  {
+                      "key": "dc.title",
+                      "value": query
+                    }
+
+    return this.http.post( this.apiUrl + 'items/find-by-metadata-field', myparam);
+  }
+  
+  
+  
 
 
 }

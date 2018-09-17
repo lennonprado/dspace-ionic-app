@@ -27,6 +27,8 @@ export class HomePage {
     .subscribe(
       (data: any[]) => { // Success
         this.comunidades = data;
+        console.log(data);
+        
       },
       (error) =>{
         console.error(error);
