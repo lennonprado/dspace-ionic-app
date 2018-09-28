@@ -3,11 +3,5 @@
   "integrations": {
     "cordova": {}
   },
-  "type": "ionic-angular",
-  "proxies": [
-    {
-      "path": "/api",
-      "proxyUrl": "http://beu.extension.unicen.edu.ar/rest/"
-    }
-  ]
+  "type": "ionic-angular"
 }

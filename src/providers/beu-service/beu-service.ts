@@ -10,11 +10,11 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class BeuService {
 
-  apiUrl = 'http://localhost:8100/api/';
+  apiUrl = 'http://beu.extension.unicen.edu.ar/rest/';
 
   constructor(public http: HttpClient) {}
 
-  getComunidades() {
+  getComunidades() {    
     return this.http.get( this.apiUrl + 'communities/');
   }
 

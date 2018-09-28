@@ -3,9 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { Splash } from './splash';
 
 @NgModule({
-  declarations: [
-    Splash,
-  ],
+  declarations: [],
   imports: [
     IonicPageModule.forChild(Splash),
   ],

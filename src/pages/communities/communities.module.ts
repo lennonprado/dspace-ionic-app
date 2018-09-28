@@ -3,9 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { CommunitiesPage } from './communities';
 
 @NgModule({
-  declarations: [
-    CommunitiesPage,
-  ],
+  declarations: [],
   imports: [
     IonicPageModule.forChild(CommunitiesPage),
   ],

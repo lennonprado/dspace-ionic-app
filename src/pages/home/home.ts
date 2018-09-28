@@ -31,6 +31,8 @@ export class HomePage {
         
       },
       (error) =>{
+        console.log('fallo aca');
+        console.log(error);
         console.error(error);
       }
     )
