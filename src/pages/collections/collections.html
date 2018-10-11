@@ -1,16 +1,8 @@
-<!--
-  Generated template for the CollectionsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
- 
-  <ion-navbar color="primary">
+<ion-header> 
+  <ion-navbar>
       <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
-
     <ion-title>{{comunidad.name}}</ion-title>
   </ion-navbar>
 
@@ -21,13 +13,24 @@
 <p>{{comunidad.introductoryText}}</p>
 
 
-<ion-list>
-  <ion-item *ngFor="let coleccion of colecciones" class="item-icon-left item-icon-right" (click)="goToPage(coleccion)" >      
-    <h2>{{ coleccion.name | uppercase }}</h2>
-    <p>{{ coleccion.shortDescription }}</p>
-    <ion-icon name="arrow-dropright"></ion-icon>
-  </ion-item>
-</ion-list>
+
+
+<ion-card class="card-comunidad"  *ngFor="let coleccion of colecciones" (click)="goToPage(coleccion)" >
+  <ion-fab right>
+    <button ion-fab mini><ion-icon name="arrow-forward"></ion-icon></button>
+  </ion-fab>   
+  <ion-card-header>                    
+    <ion-card-title>               
+        {{ coleccion.name | uppercase }}
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+      <p>{{ coleccion.shortDescription }}</p>
+  </ion-card-content>
+</ion-card>
+
+
+
 
 </ion-content>
 

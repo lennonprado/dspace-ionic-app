@@ -27,13 +27,13 @@ export class HomePage {
     .subscribe(
       (data: any[]) => { // Success
         this.comunidades = data;
-        console.log(data);
+        //console.log(data);
         
       },
       (error) =>{
-        console.log('fallo aca');
+        console.log('fallo home');
         console.log(error);
-        console.error(error);
+        //console.error(error);
       }
     )
   }

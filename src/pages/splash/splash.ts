@@ -17,7 +17,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export class Splash {
  
   constructor(public viewCtrl: ViewController, public splashScreen: SplashScreen) {
-    
+    this.ionViewDidEnter();
   }
  
 

@@ -1,25 +1,29 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Inicio</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <ion-card class="card-background-page-card">
-        <img src="/assets/imgs/background.jpg"/>
-        <div class="card-title">Bienvenido</div>
-        <div class="card-subtitle">Biblioteca Digital de Extensión Universitaria</div>
-    </ion-card>
-    
-    <ion-card  *ngFor="let comunidad of comunidades" (click)="goToPage(comunidad)" >
+    <div class="text-center">
+        <ion-img class="logo-inicio" width="300" height="120" src="./assets/imgs/beu.png"></ion-img>
+    </div>
+
+    <ion-card class="card-comunidad"  *ngFor="let comunidad of comunidades" (click)="goToPage(comunidad)" >
+            <ion-fab right>
+                    <button ion-fab mini><ion-icon name="arrow-forward"></ion-icon></button>
+                </ion-fab>   
         <ion-card-header>
-            <ion-card-title>{{ comunidad.name | uppercase }}</ion-card-title>
+                              
+            <ion-card-title>               
+                {{ comunidad.name | uppercase }}
+            </ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p>{{ comunidad.shortDescription }}</p>
+            <p>{{comunidad.shortDescription}}.</p>
         </ion-card-content>
     </ion-card> 
 

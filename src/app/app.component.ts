@@ -5,57 +5,71 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { AboutPage } from '../pages/about/about';
-import { CommunitiesPage } from '../pages/communities/communities'
+import { CollectionsPage } from '../pages/collections/collections';
+
+import { BeuService } from '../providers/beu-service/beu-service';
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
-
-  pages: Array<{title: string, component: any}>;
+  aboutPage: any = AboutPage;
+  comunidades = [];
 
   constructor(
     public platform: Platform, 
     public statusBar: StatusBar, 
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    public beuService: BeuService
   ){
 
     platform.ready().then(() => {
+      this.initializeApp();
       statusBar.styleDefault();
-      // splashScreen.hide(); // REMOVE THIS!
+      splashScreen.show(); // REMOVE THIS!
     });
-  //  this.initializeApp();
-
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Inicio', component: HomePage },
-      { title: 'Articulos', component: CommunitiesPage },
-      { title: 'Congresos', component: CommunitiesPage },
-      { title: 'Legislaciones', component: CommunitiesPage },
-      { title: 'Libros', component: CommunitiesPage },
-      { title: 'Revistas', component: CommunitiesPage },
-      { title: 'Tesis', component: CommunitiesPage },
-      { title: 'Sobre la BEU', component: AboutPage }
-    ];
 
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
+      // this.statusBar.styleDefault();
+      //  this.splashScreen.hide();
+
+      this.beuService.getComunidades()
+      .subscribe(
+        (data: any[]) => { // Success
+          this.comunidades = data;
+          console.log(data);
+          console.log('fin de carga de la home');
+        },
+        (error) =>{
+          console.log('fallo aca en la home');
+          console.log(error);
+          console.error(error);
+        }
+      )
+
   }
 
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+  
+  goToPage(item){
+    this.nav.push(CollectionsPage,item);
   }
+  
+  goToIndex(){
+    this.nav.setRoot(this.rootPage);
+  }
+
+  goToAbout(){
+    this.nav.setRoot(this.aboutPage);
+  }
+
+
 }
