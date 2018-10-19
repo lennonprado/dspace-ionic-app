@@ -3,34 +3,22 @@
       <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
-    <ion-title>{{comunidad.name}}</ion-title>
+    <ion-title>Comunidad</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
+
   <h2>{{comunidad.shortDescription}}</h2>
-<p>{{comunidad.introductoryText}}</p>
+  <p>{{comunidad.introductoryText}}</p>
 
-
-
-
-<ion-card class="card-comunidad"  *ngFor="let coleccion of colecciones" (click)="goToPage(coleccion)" >
-  <ion-fab right>
-    <button ion-fab mini><ion-icon name="arrow-forward"></ion-icon></button>
-  </ion-fab>   
-  <ion-card-header>                    
-    <ion-card-title>               
-        {{ coleccion.name | uppercase }}
-    </ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
+  <ion-card class="card-comunidad"  *ngFor="let coleccion of colecciones" (click)="goToPage(coleccion)" >
+    <ion-card-content>
+      <h2>{{ coleccion.name | uppercase }}</h2>
       <p>{{ coleccion.shortDescription }}</p>
-  </ion-card-content>
-</ion-card>
-
-
-
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
 

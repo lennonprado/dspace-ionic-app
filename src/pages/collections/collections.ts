@@ -30,7 +30,6 @@ export class CollectionsPage {
   }
 
   goToPage(coleccion){
-    
     this.navCtrl.push(ItemsPage,coleccion);
   }
 
@@ -47,7 +46,6 @@ export class CollectionsPage {
   }
   goBack() {
     this.navCtrl.pop();
-    console.log('Click on button Test Console Log');
  }
 
 }

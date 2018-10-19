@@ -7,10 +7,22 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
     <div class="text-center">
         <ion-img class="logo-inicio" width="300" height="120" src="./assets/imgs/beu.png"></ion-img>
     </div>
+
+
+    <ion-searchbar
+    [(ngModel)]="busqueda"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="searchQuery($event)"
+    (ionCancel)="onCancel($event)"
+    placeholder="Buscar elementos por descripción"
+    autocomplete="false"
+    >
+  </ion-searchbar>
+
 
     <ion-card class="card-comunidad"  *ngFor="let comunidad of comunidades" (click)="goToPage(comunidad)" >
             <ion-fab right>

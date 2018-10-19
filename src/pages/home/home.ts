@@ -9,7 +9,9 @@ import { BeuService } from '../../providers/beu-service/beu-service';
 })
 export class HomePage {
 
- comunidades = [];
+  comunidades = [];
+
+  busqueda = [];
 
   constructor(
     public navCtrl: NavController, 
@@ -23,20 +25,31 @@ export class HomePage {
   }
 
   ionViewDidLoad(){
+
+    
+
+
+
     this.beuService.getComunidades()
     .subscribe(
       (data: any[]) => { // Success
-        this.comunidades = data;
-        //console.log(data);
-        
+        this.comunidades = data;        
       },
       (error) =>{
-        console.log('fallo home');
         console.log(error);
-        //console.error(error);
       }
     )
   }
 
+  searchQuery(event){
+
+    this.beuService.search(event.target.value).subscribe( 
+      (data : any[] ) =>{ 
+      this.busqueda = data;
+      console.log(this.busqueda);
+            
+    });
+
+  }
 
 }

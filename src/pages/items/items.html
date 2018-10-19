@@ -6,7 +6,7 @@
 -->
 <ion-header>
     <ion-navbar>
-    <ion-title>{{comunidad.name}}</ion-title>
+    <ion-title>Colección</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -14,14 +14,25 @@
 
 <ion-content padding>
 
+    <h2>{{comunidad.shortDescription}}</h2>
+    <p class="subtitulo">{{comunidad.name}}</p>
 
-  <ion-list>
-    <ion-item *ngFor="let item of items" class="item-icon-left item-icon-right" (click)="goToPage(item)" >      
-      <h2>{{ item.name | uppercase }}</h2>
-      <p>{{ item.shortDescription }}</p>
-      <ion-icon name="arrow-dropright"></ion-icon>
-    </ion-item>
-  </ion-list>
+    <p text-left>{{comunidad.introductoryText}}</p>
 
+
+
+    <h3 class="elementos">Elementos de la colección:</h3>
+
+    <ion-spinner name="bubbles" *ngIf='spinner'></ion-spinner>
+<ion-list>
+  
+  <ion-item *ngFor="let item of items" (click)="goToPage(item)"  text-wrap class="item-final" >
+    
+      {{ item.name }}
+    
+      <ion-icon name="arrow-forward" class="icon-menu" item-end></ion-icon>
+
+  </ion-item>
+</ion-list>
 
 </ion-content>

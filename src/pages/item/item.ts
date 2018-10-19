@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BeuService } from '../../providers/beu-service/beu-service';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 /**
  * Generated class for the ItemPage page.
  *
@@ -33,12 +35,9 @@ export class ItemPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public beuService: BeuService 
-  ) {
-
-    //this.item = navParams.data;
-
-  }
+    public beuService: BeuService,
+    public iab : InAppBrowser 
+  ) {}
 
   ionViewDidLoad(){
     this.getItems(this.navParams.data.uuid);
@@ -47,14 +46,12 @@ export class ItemPage {
 
   goBack() {
     this.navCtrl.pop();
-    console.log('Click on button Test Console Log');
  }
 
   getItems(id){
     this.beuService.getItem(id).subscribe(
       ( data : any )  => { 
           this.item = data;
-          console.log(data);            
           this.autores = this.getAutores(data);
           this.title = this.getTitle(data);
           this.description = this.getDescription(data);
@@ -66,7 +63,8 @@ export class ItemPage {
 
   getBitstreams(id){
     this.beuService.getBitstreams(id).subscribe(
-      ( data : any[] )  =>  { this.bitstreams = data; console.log(data); },
+      ( data : any[] )  =>  { this.bitstreams = data; console.log(data);
+       },
       ( error ) =>  { console.error(error); }
     );
   }
@@ -107,6 +105,31 @@ export class ItemPage {
       return element.key === 'dc.title';
     });
     return result.value;
+  }
+
+  getFile(){
+    const result = this.bitstreams.find(function(element){
+      return element.bundleName === "ORIGINAL";
+
+    });
+
+    this.beuService.getBitstreamsRetrive(result.uuid).subscribe(
+      ( data : any[] )  =>  { console.log(data);
+       },
+      ( error ) =>  { console.error(error); }
+    );
+
+    //return result.retrieveLink;
+  }
+
+  showOnBrowser(){
+    const url = 'https://docs.google.com/viewer?url=http://beu.extension.unicen.edu.ar';   
+    
+    //this.iab.create( url + this.getFile() );
+    
+    this.getFile();
+
+
   }
 
 }

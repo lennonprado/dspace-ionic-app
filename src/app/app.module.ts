@@ -3,11 +3,11 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AboutPage } from '../pages/about/about';
-import { CommunitiesPage } from '../pages/communities/communities'
 import { CollectionsPage } from '../pages/collections/collections'
 import { ItemsPage } from '../pages/items/items';
 import { ItemPage } from '../pages/item/item';
@@ -25,7 +25,6 @@ import { BeuService } from '../providers/beu-service/beu-service'
     MyApp,
     HomePage,
     AboutPage,
-    CommunitiesPage,
     CollectionsPage,
     ItemsPage,
     ItemPage,
@@ -34,14 +33,17 @@ import { BeuService } from '../providers/beu-service/beu-service'
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      backButtonText: '',
+     
+    }
+  ),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     AboutPage,
-    CommunitiesPage,
     CollectionsPage,
     ItemsPage,
     ItemPage,
@@ -51,7 +53,11 @@ import { BeuService } from '../providers/beu-service/beu-service'
     BeuService,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    InAppBrowser,
+    {
+      provide: ErrorHandler, 
+      useClass: IonicErrorHandler
+    }
   ]
 })
 export class AppModule {}

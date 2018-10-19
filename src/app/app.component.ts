@@ -46,13 +46,9 @@ export class MyApp {
       .subscribe(
         (data: any[]) => { // Success
           this.comunidades = data;
-          console.log(data);
-          console.log('fin de carga de la home');
         },
         (error) =>{
-          console.log('fallo aca en la home');
-          console.log(error);
-          console.error(error);
+          console.log('fallo aca en la home', error);
         }
       )
 
@@ -68,7 +64,7 @@ export class MyApp {
   }
 
   goToAbout(){
-    this.nav.setRoot(this.aboutPage);
+    this.nav.push(this.aboutPage);
   }
 
 

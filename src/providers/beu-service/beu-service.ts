@@ -12,6 +12,8 @@ export class BeuService {
 
   apiUrl = 'http://beu.extension.unicen.edu.ar/rest/';
 
+  //apiUrl = 'https://demo.dspace.org/rest/';
+
   constructor(public http: HttpClient) {}
 
   getComunidades() {    
@@ -34,13 +36,15 @@ export class BeuService {
     return this.http.get( this.apiUrl + 'items/' + id + '/bitstreams');
   }
 
-  search(query) {
-    const myparam =  {
-                      "key": "dc.title",
-                      "value": query
-                    }
+  getBitstreamsRetrive(id) {
+    return this.http.get( this.apiUrl + 'bitstreams/' + id + '/retrieve');
+  }
 
-    return this.http.post( this.apiUrl + 'items/find-by-metadata-field', myparam);
+  search(query) {
+   
+  
+    return this.http.get( 'http://beu.extension.unicen.edu.ar/rest/filtered-items?limit=2000&offset=0&query_field[]=dc.description&query_op[]=contains&query_val[]=' + query );
+  
   }
   
   

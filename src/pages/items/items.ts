@@ -19,6 +19,8 @@ export class ItemsPage {
 
   comunidad;
 
+  spinner = true;
+
   items = [];
 
   constructor(
@@ -28,14 +30,13 @@ export class ItemsPage {
   ) {
     
     this.comunidad = navParams.data;
-
+    console.log(this.comunidad);
+    
   }
 
  
   goToPage(item){
-    
     this.navCtrl.push(ItemPage,item);
-    
   }
 
   ionViewDidLoad(){
@@ -43,9 +44,10 @@ export class ItemsPage {
     .subscribe(
       (data: any[]) => { // Success
         this.items = data;
+        this.spinner = false;
       },
       (error) =>{
-        console.error(error);
+        console.log(error);
       }
     )
   }

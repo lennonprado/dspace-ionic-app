@@ -23,6 +23,11 @@
     font-style: normal;
 }
 
+.logo-header{
+    padding: 20px;
+    width: 90%;
+}
+
 
 .modal-wrapper {
     width: 100%;
@@ -46,11 +51,30 @@ h2, h3, h4 {
 }
 
 ion-card-content p {
-    text-align: left !important;
+    text-align: left;
 }
 
 .background-gradient{
     background: #8360c3;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #2ebf91, #8360c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+  .icon-menu{
+    color: #2ebf91;
+    font-size: 100%;
+    margin-right: 20px;
+  } 
+
+  .subtitulo{
+    background: #8360c3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2ebf91, #8360c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 80%;
+    text-align: center;
   }

@@ -22,16 +22,16 @@
     </span></p>
       
     <p>
-        <ion-badge class="background-gradient" item-end  *ngFor="let tag of tags">
-          {{tag.value}}
-        </ion-badge>
+      <ion-badge class="background-gradient" item-end  *ngFor="let tag of tags">
+        {{tag.value}}
+      </ion-badge>
     </p>
 
-      <b>Reseña</b>
+    <b>Reseña</b>
     <p class="resena" *ngFor="let descr of description">
       {{ descr.value}}
     </p>
 
 
- <button ion-button block>Descargar</button>
+ <button ion-button block (tap)='showOnBrowser()'> <ion-icon name="attach"></ion-icon> Descargar</button>
 </ion-content>

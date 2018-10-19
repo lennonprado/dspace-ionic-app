@@ -1,41 +1,24 @@
 
 
-    ion-card {
+ion-card {
+    border-radius: 5px !important;
+    background: #8360c3;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2ebf91, #8360c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin-left: 0px !important;
+    width: calc(100%) !important;
+}
 
-        border-radius: 5px !important;
-        
-      }
-  
-  
-  .text-center{text-align: center; padding: 20px;}
-  .logo-inicio{
-    margin: auto;
-  }
-  
-    .card-comunidad{
-      background: #8360c3;  /* fallback for old browsers */
-      background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);  /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to right, #2ebf91, #8360c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    }
-    .card-comunidad ion-card-header{
-      color: #fff !important
-    }
-  
-    ion-card-title{
-      color: #ffffff !important;
-    }
-    ion-card-content p{
-      color: #000000 !important;
-      font-size: 80% !important;
-    }
-  
-  .fab {background: none !important; 
-    padding-top:10px;
-  }
 
-  h2{
-      font-weight: bold;
-      font-size: 200%;
-      line-height: 100%;
-      margin: 20px 0px 20px 0px; 
-  }
+ion-card-content h2{
+  color: #ffffff !important;
+  font-weight: bold !important;
+  font-size: 90% !important;
+  line-height: 120% !important;
+  margin: 20px 0px 20px 0px; 
+}
+
+ion-card-content p{
+  color: #000000 !important;
+  font-size: 80% !important;
+}
