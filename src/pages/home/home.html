@@ -14,30 +14,49 @@
 
 
     <ion-searchbar
-    [(ngModel)]="busqueda"
+    [(ngModel)]="query"
     [showCancelButton]="shouldShowCancel"
     (ionInput)="searchQuery($event)"
-    (ionCancel)="onCancel($event)"
+    (ionCancel)="onCancelSearch($event)"
     placeholder="Buscar elementos por descripción"
     autocomplete="false"
     >
   </ion-searchbar>
 
-
-    <ion-card class="card-comunidad"  *ngFor="let comunidad of comunidades" (click)="goToPage(comunidad)" >
-            <ion-fab right>
-                    <button ion-fab mini><ion-icon name="arrow-forward"></ion-icon></button>
-                </ion-fab>   
-        <ion-card-header>
-                              
-            <ion-card-title>               
-                {{ comunidad.name | uppercase }}
-            </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-            <p>{{comunidad.shortDescription}}.</p>
-        </ion-card-content>
-    </ion-card> 
+    <div *ngIf='query === ""'>
+        <ion-card class="card-comunidad"  *ngFor="let comunidad of comunidades" (click)="goToPage(comunidad)" >
+                <ion-fab right>
+                        <button ion-fab mini><ion-icon name="arrow-forward"></ion-icon></button>
+                    </ion-fab>   
+            <ion-card-header>
+                                
+                <ion-card-title>               
+                    {{ comunidad.name | uppercase }}
+                </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <p>{{comunidad.shortDescription}}.</p>
+            </ion-card-content>
+        </ion-card> 
+    </div>
+    <div *ngIf='query !== ""'>
+        
+    <ion-list>
+      
+      <ion-item *ngFor="let item of busqueda" (click)="goToPage(item)"  text-wrap class="item-final" >
+        
+          {{ item.name }}
+        
+          <ion-icon name="arrow-forward" class="icon-menu" item-end></ion-icon>
+    
+      </ion-item>
+    </ion-list>
+    
+    <div padding>
+        <button ion-button outline round full block (click)='searchMore()' >Más resultados</button>
+    </div>
+ </div>
+ <ion-spinner name="bubbles" *ngIf='spinner'></ion-spinner>
 
 </ion-content>
 

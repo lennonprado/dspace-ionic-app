@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class BeuService {
 
+
   apiUrl = 'http://beu.extension.unicen.edu.ar/rest/';
 
   //apiUrl = 'https://demo.dspace.org/rest/';
@@ -40,10 +41,9 @@ export class BeuService {
     return this.http.get( this.apiUrl + 'bitstreams/' + id + '/retrieve');
   }
 
-  search(query) {
-   
-  
-    return this.http.get( 'http://beu.extension.unicen.edu.ar/rest/filtered-items?limit=2000&offset=0&query_field[]=dc.description&query_op[]=contains&query_val[]=' + query );
+  search(query,offset) {
+    
+    return this.http.get( 'http://beu.extension.unicen.edu.ar/rest/filtered-items?limit=10&offset='+offset+'&query_field[]=dc.description&query_op[]=contains&query_val[]=' + query );
   
   }
   
