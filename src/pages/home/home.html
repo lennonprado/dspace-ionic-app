@@ -18,7 +18,7 @@
     [showCancelButton]="shouldShowCancel"
     (ionInput)="searchQuery($event)"
     (ionCancel)="onCancelSearch($event)"
-    placeholder="Buscar elementos por descripción"
+    placeholder="Ingrese un texto a buscar"
     autocomplete="false"
     >
   </ion-searchbar>
@@ -41,22 +41,19 @@
     </div>
     <div *ngIf='query !== ""'>
         
-    <ion-list>
-      
-      <ion-item *ngFor="let item of busqueda" (click)="goToPage(item)"  text-wrap class="item-final" >
-        
+    <ion-list  class="resultado">      
+      <ion-item *ngFor="let item of busqueda" (click)="goToItem(item)"  text-wrap class="item-final" >
           {{ item.name }}
-        
           <ion-icon name="arrow-forward" class="icon-menu" item-end></ion-icon>
-    
       </ion-item>
     </ion-list>
     
-    <div padding>
-        <button ion-button outline round full block (click)='searchMore()' >Más resultados</button>
+    <div text-center> 
+        <button [disabled]='noMore' ion-button small block (click)='searchMore()' >Más resultados</button>
     </div>
  </div>
  <ion-spinner name="bubbles" *ngIf='spinner'></ion-spinner>
+
 
 </ion-content>
 

@@ -31,7 +31,7 @@ export class MyApp {
     platform.ready().then(() => {
       this.initializeApp();
       statusBar.styleDefault();
-      splashScreen.show(); // REMOVE THIS!
+      splashScreen.hide(); // REMOVE THIS!
     });
 
   }

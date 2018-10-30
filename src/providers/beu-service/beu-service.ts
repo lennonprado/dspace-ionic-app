@@ -42,13 +42,8 @@ export class BeuService {
   }
 
   search(query,offset) {
-    
-    return this.http.get( 'http://beu.extension.unicen.edu.ar/rest/filtered-items?limit=10&offset='+offset+'&query_field[]=dc.description&query_op[]=contains&query_val[]=' + query );
-  
+    const urlToFind = 'http://beu.extension.unicen.edu.ar/rest/filtered-items?limit=10&offset='+offset+'&query_field[]=dc.title&query_field[]=dc.description&query_op[]=contains&query_op[]=contains&query_val[]=' + query + '&query_val[]=' + query; 
+    return this.http.get( urlToFind ); 
   }
-  
-  
-  
-
 
 }

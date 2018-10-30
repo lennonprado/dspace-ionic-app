@@ -28,10 +28,21 @@
     </p>
 
     <b>Reseña</b>
-    <p class="resena" *ngFor="let descr of description">
-      {{ descr.value}}
+    <p class="resena">
+      {{ description.value}}
     </p>
 
 
- <button ion-button block (tap)='showOnBrowser()'> <ion-icon name="attach"></ion-icon> Descargar</button>
+    <div text-center> 
+
+
+      <ion-spinner name="bubbles" *ngIf='spinner'></ion-spinner>
+
+
+ <button ion-button block round (tap)='showOnBrowser()'>Descargar</button>
+
+
+</div>
+
+
 </ion-content>

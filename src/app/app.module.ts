@@ -4,6 +4,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { FileOpener } from '@ionic-native/file-opener';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -54,6 +57,10 @@ import { BeuService } from '../providers/beu-service/beu-service'
     StatusBar,
     SplashScreen,
     InAppBrowser,
+    FileTransfer,
+    FileTransferObject,
+    File,
+    FileOpener,
     {
       provide: ErrorHandler, 
       useClass: IonicErrorHandler

@@ -3,6 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BeuService } from '../../providers/beu-service/beu-service';
 
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { AlertController } from 'ionic-angular';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { FileOpener } from '@ionic-native/file-opener';
 
 /**
  * Generated class for the ItemPage page.
@@ -18,25 +22,31 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 })
 export class ItemPage {
 
-  item = [];
 
   title               = '';
-  autores     : any[] = [];
   date                = '';
-  description : any[] = [];
+  rights              = '';
   format              = '';
   language            = '';
+  item        : any[] = [];
+  autores     : any[] = [];
+  description : any[] = [];
   publisher   : any[] = [];
-  rights              = '';
   tags        : any[] = [];
-
-  bitstreams = [];
+  bitstreams  : any[] = [];
+  spinner             = false;
+  fileTransfer: FileTransferObject;
+  
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public beuService: BeuService,
-    public iab : InAppBrowser 
+    public iab : InAppBrowser,
+    private transfer: FileTransfer, 
+    private file: File,
+    private fileOpener: FileOpener,
+    public alertCtrl: AlertController 
   ) {}
 
   ionViewDidLoad(){
@@ -57,15 +67,31 @@ export class ItemPage {
           this.description = this.getDescription(data);
           this.tags = this.getTags(data);
         },
-      ( error ) => { console.error(error); } 
+      ( error ) => { 
+        const alert = this.alertCtrl.create({
+          title: 'Alerta',
+          subTitle: 'Hubo un problema para encontrar el artículo.',
+          buttons: ['OK']
+        });
+        alert.present();
+       } 
     ); 
   }
 
   getBitstreams(id){
     this.beuService.getBitstreams(id).subscribe(
-      ( data : any[] )  =>  { this.bitstreams = data; console.log(data);
+      ( data : any[] )  =>  { this.bitstreams = data;
        },
-      ( error ) =>  { console.error(error); }
+      ( error ) =>  { 
+        
+        const alert = this.alertCtrl.create({
+          title: 'Alerta',
+          subTitle: 'Hubo un problema para encontrar archivos asociados al artículo.',
+          buttons: ['OK']
+        });
+        alert.present();
+
+       }
     );
   }
 
@@ -75,7 +101,6 @@ export class ItemPage {
     const result = this.item.filter(function(element){
         return element.key === key;
     },key);
-    
     return result;
   }
   
@@ -86,8 +111,8 @@ export class ItemPage {
     return result;
   }
 
-  getDescription(data : any[]) : any[]{
-    const result = this.item.filter(function(element){
+  getDescription(data : any) : any{
+    const result = this.item.find(function(element){
       return element.key === 'dc.description';
     });
     return result;
@@ -112,23 +137,34 @@ export class ItemPage {
       return element.bundleName === "ORIGINAL";
 
     });
-
-    this.beuService.getBitstreamsRetrive(result.uuid).subscribe(
-      ( data : any[] )  =>  { console.log(data);
-       },
-      ( error ) =>  { console.error(error); }
-    );
-
-    //return result.retrieveLink;
+   return result.retrieveLink;
   }
 
   showOnBrowser(){
-    const url = 'https://docs.google.com/viewer?url=http://beu.extension.unicen.edu.ar';   
-    
-    //this.iab.create( url + this.getFile() );
-    
-    this.getFile();
-
+    this.spinner = true;
+    const retrieveLink = 'http://beu.extension.unicen.edu.ar' + this.getFile();
+    this.fileTransfer = this.transfer.create();
+    this.fileTransfer.download(retrieveLink, this.file.dataDirectory + this.navParams.data.uuid  +'.pdf').then((entry) => { 
+      this.fileOpener.open(entry.toURL(), 'application/pdf')
+      .then(() => { 
+        this.spinner = false; 
+      })
+      .catch(e => {  
+        const alert = this.alertCtrl.create({
+          title: 'Alerta',
+          subTitle: 'Hubo un problema para descargar el archivo.',
+          buttons: ['OK']
+        });
+        alert.present();
+      });
+    }, (error) => {
+      const alert = this.alertCtrl.create({
+        title: 'Alerta',
+        subTitle: 'Hubo un problema para encontrar el archivo en el servidor.',
+        buttons: ['OK']
+      });
+      alert.present();
+    });
 
   }
 
