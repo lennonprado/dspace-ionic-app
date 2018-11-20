@@ -15,6 +15,7 @@ import { CollectionsPage } from '../pages/collections/collections'
 import { ItemsPage } from '../pages/items/items';
 import { ItemPage } from '../pages/item/item';
 import { Splash } from '../pages/splash/splash';
+import { SearchPage } from '../pages/search/search';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -31,6 +32,7 @@ import { BeuService } from '../providers/beu-service/beu-service'
     CollectionsPage,
     ItemsPage,
     ItemPage,
+    SearchPage,
     Splash
   ],
   imports: [
@@ -50,6 +52,7 @@ import { BeuService } from '../providers/beu-service/beu-service'
     CollectionsPage,
     ItemsPage,
     ItemPage,
+    SearchPage,
     Splash
   ],
   providers: [

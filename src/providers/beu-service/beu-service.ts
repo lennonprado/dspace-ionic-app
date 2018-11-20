@@ -41,8 +41,8 @@ export class BeuService {
     return this.http.get( this.apiUrl + 'bitstreams/' + id + '/retrieve');
   }
 
-  search(query,offset) {
-    const urlToFind = 'http://beu.extension.unicen.edu.ar/rest/filtered-items?limit=10&offset='+offset+'&query_field[]=dc.title&query_field[]=dc.description&query_op[]=contains&query_op[]=contains&query_val[]=' + query + '&query_val[]=' + query; 
+  search(query,field,offset) {
+    const urlToFind = 'http://beu.extension.unicen.edu.ar/rest/filtered-items?limit=10&offset='+offset+'&query_field[]='+field+'&query_op[]=contains&query_val[]=' + query; 
     return this.http.get( urlToFind ); 
   }
 

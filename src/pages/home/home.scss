@@ -1,55 +1,41 @@
-
-
 ion-card {
-
   border-radius: 5px !important;
-  
 }
-
-
-.text-center{text-align: center; padding: 20px;}
+.text-center{
+  text-align: center; 
+  padding: 20px;
+}
 .logo-inicio{
   margin: auto;
 }
-
-  .card-comunidad{
-    background: #8360c3;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2ebf91, #8360c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  }
-  .card-comunidad ion-card-header{
-    color: #fff !important
-  }
-
-  ion-card-title{
-    color: #ffffff !important;
-  }
-  ion-card-content p{
-    color: #000000 !important;
-    font-size: 80% !important;
-  }
-
+.card-comunidad{
+  background: #8360c3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2ebf91, #8360c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.card-comunidad ion-card-header{
+  color: #fff !important
+}
+ion-card-title{
+  color: #ffffff !important;
+}
+ion-card-content p{
+  color: #000000 !important;
+  font-size: 80% !important;
+}
 .fab {background: none !important; 
   padding-top:10px;
 }
-
 ion-searchbar{
-  
   padding: 10px !important;
   border-radius: 5px;
   background: #2ebf91  !important;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #2ebf91, #8360c3)  !important;  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #2ebf91, #8360c3) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
 .resultado{ 
   margin-top: 10px;
-  
-/*  border-top: #2ebf91 1px solid;
-  border-bottom: #2ebf91 1px solid;
-  border-radius: 5px;*/
  }
-
  .resultado ion-item:first-child{
    border-top-left-radius: 5px;
    border-top-right-radius: 5px;
@@ -64,7 +50,6 @@ ion-searchbar{
   border-left: #2ebf91 1px solid !important;
   border-right:#2ebf91 1px solid !important;
 }
-
 .credits{
   font-size: 80%;
   font-weight: normal;

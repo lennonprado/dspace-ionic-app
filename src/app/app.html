@@ -9,7 +9,9 @@
       <button menuClose ion-item (click)="goToIndex()">
           <ion-icon class="icon-menu" name="home"></ion-icon> Inicio
       </button>
-
+      <button menuClose ion-item (click)="goToSearch()">
+        <ion-icon class="icon-menu" name="search"></ion-icon> Buscar
+      </button>
       <button menuClose ion-item *ngFor="let comunidad of comunidades" (click)="goToPage(comunidad)">
           <ion-icon class="icon-menu" name="list-box"></ion-icon> {{comunidad.name}}
       </button>

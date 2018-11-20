@@ -1,0 +1,31 @@
+.mutted{
+    color: #2ebf91;
+    text-align: left;
+    line-height: 100%;
+    font-size: 90%;
+    font-style: italic;
+}
+.search-box{
+    background: #8360c3 !important;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2ebf91, #8360c3) !important;  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2ebf91, #8360c3) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 5px;
+    
+    .item{
+        background-color: rgba(0, 0, 0, 0);
+
+        ion-label{ color: #FFFFFF;}
+    }
+}
+
+.button-full{ 
+
+
+    border: #FFFFFF 1px solid !important;
+    margin: 2px !important;
+    color: #FFFFFF !important;
+    border-radius: 5px !important;
+    width: 99%;
+
+
+}

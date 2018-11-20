@@ -7,6 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { AboutPage } from '../pages/about/about';
 import { CollectionsPage } from '../pages/collections/collections';
 
+import { SearchPage } from '../pages/search/search' 
+
 import { BeuService } from '../providers/beu-service/beu-service';
 
 
@@ -19,6 +21,7 @@ export class MyApp {
 
   rootPage: any = HomePage;
   aboutPage: any = AboutPage;
+  searchPage: any = SearchPage;
   comunidades = [];
 
   constructor(
@@ -66,6 +69,11 @@ export class MyApp {
   goToAbout(){
     this.nav.push(this.aboutPage);
   }
+
+  goToSearch(){
+    this.nav.push(this.searchPage);
+  }
+  
 
 
 }

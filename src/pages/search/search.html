@@ -1,0 +1,58 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Buscar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <h1>Buscador</h1>
+    <p class="mutted"> <ion-icon name="color-wand"></ion-icon>Tip: El buscador distingue entre mayúsculas y minúsculas. Intente buscar nombres propios comenzando con la primer letra en mayúscula.</p>
+
+    <ion-list class="search-box">
+
+        <ion-item>
+          <ion-label stacked>Texto a buscar</ion-label>
+          <ion-input type="text" [(ngModel)]="query" ></ion-input>
+        </ion-item>
+      
+        <ion-item>
+            <ion-label stacked>Campo</ion-label>
+            <ion-select [(ngModel)]="field" multiple="false" cancelText="Cancelar" okText="Seleccionar">
+                <ion-option value="dc.title" selected="true">Buscar por título</ion-option>
+                <ion-option value="dc.creator">Buscar por autor</ion-option>
+                <ion-option value="dc.description">Buscar por descriptión</ion-option>
+                <ion-option value="dc.publisher">Buscar por editorial</ion-option>
+                <ion-option value="dc.subject">Buscar por palabras clave</ion-option>
+              </ion-select>  
+        </ion-item>
+      
+        <ion-item>
+          <button class="button-full" ion-button outline large (tap)='searchQuery()'>Buscar</button>
+        </ion-item>
+      </ion-list>
+
+
+
+    <ion-spinner name="bubbles" *ngIf='spinner'></ion-spinner>
+
+    <ion-list  class="resultado" *ngIf='!spinner'>      
+      <ion-item *ngFor="let item of busqueda" (click)="goToItem(item)"  text-wrap class="item-final" >
+          {{ item.name }}
+          <ion-icon name="arrow-forward" class="icon-menu" item-end></ion-icon>
+      </ion-item>
+    </ion-list>
+    
+   
+
+
+</ion-content>
