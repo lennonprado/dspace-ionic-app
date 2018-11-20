@@ -3,9 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { SearchPage } from './search';
 
 @NgModule({
-  declarations: [
-    SearchPage,
-  ],
+  declarations: [],
   imports: [
     IonicPageModule.forChild(SearchPage),
   ],
